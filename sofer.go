@@ -1,7 +1,6 @@
 package sofer
 
 import (
-	"bytes"
 	"sync"
 
 	"github.com/decanus/bureka/dht"
@@ -12,7 +11,13 @@ import (
 
 type Credentials []byte
 
-type GroupID string
+type groupID string
+
+type group struct {
+	parent      state.Peer
+	children    []state.Peer
+	credentials Credentials
+}
 
 // GroupCredentials is a class that allows for various credential schemes
 type GroupCredentials interface {
@@ -24,18 +29,15 @@ type Sofer struct {
 	sync.RWMutex
 
 	groupCredentials GroupCredentials
-	groups map[GroupID]Credentials
-
-	parents map[GroupID]state.Peer
-	children map[GroupID][]state.Peer
+	groups           map[groupID]*group
 
 	receiver *internal.Receiver
-	dht *dht.DHT
+	dht      *dht.DHT
 }
 
 func New(dht *dht.DHT, credentials GroupCredentials) *Sofer {
 	s := &Sofer{
-		dht: dht,
+		dht:              dht,
 		groupCredentials: credentials,
 	}
 
@@ -46,16 +48,32 @@ func New(dht *dht.DHT, credentials GroupCredentials) *Sofer {
 	return s
 }
 
+// JoinGroup joins a specific group.
+func (s *Sofer) JoinGroup(id []byte, peer state.Peer) {
+	gid := groupID(id)
+
+	group, ok := s.groups[gid]
+	if !ok {
+		// @todo create group
+	}
+
+	group.children = append(group.children, peer)
+}
+
 // CreateGroup creates a group with the specific access credentials.
 func (s *Sofer) CreateGroup(credentials []byte, id []byte) {
 	s.Lock()
 	defer s.Unlock()
 
-	for _, g := range s.groups {
-		if bytes.Equal(g, id) {
-			return
-		}
+	gid := groupID(id)
+	_, ok := s.groups[gid]
+	if ok {
+		return
 	}
 
-	s.groups[GroupID(id)] = credentials
+	s.groups[gid] = &group{
+		parent:      nil,
+		children:    make([]state.Peer, 0),
+		credentials: credentials,
+	}
 }
