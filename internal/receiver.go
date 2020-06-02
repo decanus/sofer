@@ -22,6 +22,9 @@ func (r *Receiver) Deliver(msg *pb.Message) {
 }
 
 func (r *Receiver) Forward(msg *pb.Message, target state.Peer) bool {
+
+	// @todo if we are forwarding a join message, and the origin is from self, we set the target as the parent of the group.
+
 	panic("implement me")
 }
 

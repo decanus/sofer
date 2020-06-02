@@ -5,6 +5,7 @@ import (
 	"sync"
 
 	"github.com/decanus/bureka/dht"
+	"github.com/decanus/bureka/dht/state"
 
 	"github.com/decanus/sofer/internal"
 )
@@ -24,6 +25,9 @@ type Sofer struct {
 
 	groupCredentials GroupCredentials
 	groups map[GroupID]Credentials
+
+	parents map[GroupID]state.Peer
+	children map[GroupID][]state.Peer
 
 	receiver *internal.Receiver
 	dht *dht.DHT
