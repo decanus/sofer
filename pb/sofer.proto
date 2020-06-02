@@ -1,0 +1,16 @@
+syntax = "proto3";
+package pb;
+
+message Message {
+
+    enum Type {
+        CREATE = 0;
+        JOIN = 1;
+        MULTICAST = 2;
+        LEAVE = 3;
+    }
+
+    Type type = 1;
+    bytes group = 2;
+    bytes data = 3;
+}
