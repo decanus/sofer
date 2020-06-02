@@ -9,6 +9,15 @@ import (
 	"github.com/decanus/sofer/internal"
 )
 
+// @TODO: One of the problems I currently see is credential handling.
+// For a node to join the group it seems as though they need credentials in the paper.
+// I would argue that this is a security vulnerability, the tree should be buildable without
+// needing to have the credentials. The credentials however should be needed when disseminating messages.
+// This means that the passed credentials should for example be a list of pubkeys that can send
+// Or some ZK proof scheme as mentioned in the ZK GROUP paper from Signal.
+// Credentials are therefore not credentials but verification data for when credentials are used.
+// So to send a message, if it is a list of pubkeys some unique signature should be used, this is probably not 100% safe.
+
 type Credentials []byte
 
 type groupID string
