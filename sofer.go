@@ -61,12 +61,19 @@ func New(dht *dht.DHT, credentials GroupCredentials) *Sofer {
 func (s *Sofer) JoinGroup(id []byte, peer state.Peer) {
 	gid := groupID(id)
 
-	group, ok := s.groups[gid]
-	if !ok {
-		// @todo create group
+	g := s.groups[gid]
+	if g == nil {
+		//g := &group{
+		//	parent:      nil,
+		//	children:    make([]state.Peer, 0),
+		//	credentials: nil,
+		//}
+		//
+		//s.groups[gid] = g
+		// @todo create the group
 	}
 
-	group.children = append(group.children, peer)
+	g.children = append(g.children, peer)
 }
 
 // CreateGroup creates a group with the specific access credentials.
