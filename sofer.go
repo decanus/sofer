@@ -62,8 +62,8 @@ func (s *Sofer) CreateGroup(credentials []byte, id []byte) {
 	}
 
 	s.groups[GroupID(id)] = &group{
-		parent: nil,
-		children: make([]state.Peer, 0),
+		parent:      nil,
+		children:    make([]state.Peer, 0),
 		credentials: credentials,
 	}
 }
