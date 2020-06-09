@@ -1,10 +1,10 @@
 package sofer
 
 import (
-	"bytes"
 	"sync"
 
 	"github.com/decanus/bureka/dht"
+	"github.com/decanus/bureka/dht/state"
 
 	"github.com/decanus/sofer/internal"
 )
@@ -12,6 +12,13 @@ import (
 type Credentials []byte
 
 type GroupID string
+
+type group struct {
+	parent   state.Peer
+	children []state.Peer
+
+	credentials Credentials
+}
 
 // GroupCredentials is a class that allows for various credential schemes
 type GroupCredentials interface {
@@ -23,15 +30,15 @@ type Sofer struct {
 	sync.RWMutex
 
 	groupCredentials GroupCredentials
-	groups map[GroupID]Credentials
+	groups           map[GroupID]*group
 
 	receiver *internal.Receiver
-	dht *dht.DHT
+	dht      *dht.DHT
 }
 
 func New(dht *dht.DHT, credentials GroupCredentials) *Sofer {
 	s := &Sofer{
-		dht: dht,
+		dht:              dht,
 		groupCredentials: credentials,
 	}
 
@@ -47,11 +54,16 @@ func (s *Sofer) CreateGroup(credentials []byte, id []byte) {
 	s.Lock()
 	defer s.Unlock()
 
-	for _, g := range s.groups {
-		if bytes.Equal(g, id) {
-			return
-		}
+	gid := GroupID(id)
+
+	_, ok := s.groups[gid]
+	if ok {
+		return
 	}
 
-	s.groups[GroupID(id)] = credentials
+	s.groups[GroupID(id)] = &group{
+		parent: nil,
+		children: make([]state.Peer, 0),
+		credentials: credentials,
+	}
 }
