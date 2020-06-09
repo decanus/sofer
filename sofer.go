@@ -23,8 +23,9 @@ type Credentials []byte
 type groupID string
 
 type group struct {
-	parent      state.Peer
-	children    []state.Peer
+	parent   state.Peer
+	children []state.Peer
+
 	credentials Credentials
 }
 

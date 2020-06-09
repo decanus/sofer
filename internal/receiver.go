@@ -31,4 +31,3 @@ func (r *Receiver) Forward(msg *pb.Message, target state.Peer) bool {
 func (r *Receiver) Heartbeat(id state.Peer) {
 	panic("implement me")
 }
-
