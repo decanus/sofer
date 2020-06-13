@@ -34,6 +34,8 @@ github.com/davidlazar/go-crypto v0.0.0-20170701192655-dcfb0a7ac018/go.mod h1:rQY
 github.com/davidlazar/go-crypto v0.0.0-20190912175916-7055855a373f/go.mod h1:rQYf4tfk5sSwFsnDg3qYaBxSjsD9S8+59vW0dKUgme4=
 github.com/decanus/bureka v0.0.0-20200609144649-6abe4f6087f4 h1:wu14MjR286JK4AK+duIGyipA7zNEW1Nt9WWm5Ortql8=
 github.com/decanus/bureka v0.0.0-20200609144649-6abe4f6087f4/go.mod h1:kfuXRyGMqKIhSg3IlNg2s9EnM3PYV6z+ngsgk9fZOsg=
+github.com/decanus/bureka v0.0.0-20200609213010-8a574744dfb7 h1:gBHRSyccKwkBcBEMHpYwWzGOs7XkujTwsWNWzsv/BP8=
+github.com/decanus/bureka v0.0.0-20200609213010-8a574744dfb7/go.mod h1:kfuXRyGMqKIhSg3IlNg2s9EnM3PYV6z+ngsgk9fZOsg=
 github.com/dgraph-io/badger v1.5.5-0.20190226225317-8115aed38f8f/go.mod h1:VZxzAIRPHRVNRKRo6AXrX9BJegn6il06VMTZVJYCIjQ=
 github.com/dgraph-io/badger v1.6.0-rc1/go.mod h1:zwt7syl517jmP8s94KqSxTlM6IMsdhYy6psNgSztDR4=
 github.com/dgraph-io/badger v1.6.0/go.mod h1:zwt7syl517jmP8s94KqSxTlM6IMsdhYy6psNgSztDR4=
