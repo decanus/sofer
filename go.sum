@@ -36,6 +36,8 @@ github.com/decanus/bureka v0.0.0-20200609144649-6abe4f6087f4 h1:wu14MjR286JK4AK+
 github.com/decanus/bureka v0.0.0-20200609144649-6abe4f6087f4/go.mod h1:kfuXRyGMqKIhSg3IlNg2s9EnM3PYV6z+ngsgk9fZOsg=
 github.com/decanus/bureka v0.0.0-20200609213010-8a574744dfb7 h1:gBHRSyccKwkBcBEMHpYwWzGOs7XkujTwsWNWzsv/BP8=
 github.com/decanus/bureka v0.0.0-20200609213010-8a574744dfb7/go.mod h1:kfuXRyGMqKIhSg3IlNg2s9EnM3PYV6z+ngsgk9fZOsg=
+github.com/decanus/bureka v0.0.0-20200619125235-4f4b6bd185ab h1:N7ITCj19B54A77xo8zLrVhdCE7y2+veGb5RZFC7vl8c=
+github.com/decanus/bureka v0.0.0-20200619125235-4f4b6bd185ab/go.mod h1:7s2DZzSWYh4Svj3XXTsliZMZM1Ho+HrAMbqKbjzLhhY=
 github.com/dgraph-io/badger v1.5.5-0.20190226225317-8115aed38f8f/go.mod h1:VZxzAIRPHRVNRKRo6AXrX9BJegn6il06VMTZVJYCIjQ=
 github.com/dgraph-io/badger v1.6.0-rc1/go.mod h1:zwt7syl517jmP8s94KqSxTlM6IMsdhYy6psNgSztDR4=
 github.com/dgraph-io/badger v1.6.0/go.mod h1:zwt7syl517jmP8s94KqSxTlM6IMsdhYy6psNgSztDR4=
